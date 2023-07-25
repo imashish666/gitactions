@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  www-api:
+    container_name: securly-www-api
+    build:
+        dockerfile: ./dev.dockerfile
+    volumes:
+      - ./config:/opt/code/app/config
+    ports:
+      - 8080:8080
+    networks:
+      - securly-www-net
+    restart: always
+
+networks:
+  securly-www-net:
+    external: true

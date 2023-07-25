@@ -1,0 +1,362 @@
+basePath: /api
+definitions:
+  datatypes.AtRiskResponse:
+    properties:
+      atRiskScore:
+        type: integer
+    type: object
+  datatypes.EventScoreResponse:
+    properties:
+      atRiskKey:
+        type: string
+      atRiskScore:
+        type: integer
+      atRiskValue:
+        type: string
+    type: object
+  datatypes.FilterType:
+    properties:
+      adIntranet:
+        items:
+          type: integer
+        type: array
+      azureGrpImportPref:
+        type: string
+      blockPageMsg:
+        items:
+          type: integer
+        type: array
+      id:
+        type: integer
+      lockValue:
+        type: integer
+      parentSetting:
+        type: integer
+      schoolType:
+        type: integer
+      showEns:
+        type: integer
+      showPause:
+        type: integer
+      showPnp:
+        type: integer
+      userID:
+        type: integer
+    type: object
+  datatypes.Notification:
+    properties:
+      basegen:
+        type: integer
+      fid:
+        type: string
+      id:
+        type: integer
+      notificationEmail:
+        type: string
+    type: object
+  datatypes.RiskScore:
+    properties:
+      email:
+        type: string
+      selfHarmScore:
+        type: string
+    type: object
+  datatypes.StudentInfo:
+    properties:
+      familyName:
+        type: string
+      givenName:
+        type: string
+    type: object
+  datatypes.TimezoneResponse:
+    properties:
+      tz:
+        type: string
+      tzAbbr:
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    name: Securly
+    url: https://https://www.securly.com
+  description: This is www-api server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: WWW-API
+  version: "1.0"
+paths:
+  /api/customer/filter-type:
+    get:
+      description: fetches filters for an fid
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.FilterType'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Filter
+      tags:
+      - Customer
+  /api/customer/notification/config/aware:
+    get:
+      description: fetches notification email
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.Notification'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Notification
+      tags:
+      - Customer
+  /api/customer/privacy/status:
+    get:
+      description: fetches info of a student
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Privacy Status
+      tags:
+      - Customer
+  /api/customer/timezone:
+    get:
+      description: fetches timezone for a fid
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.TimezoneResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Timezone
+      tags:
+      - Customer
+  /api/user:
+    get:
+      description: fetches info of a student
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.StudentInfo'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get student info
+      tags:
+      - Student
+  /atRisk/cache/create:
+    post:
+      description: add/update a value in cache
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.AtRiskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a cache
+      tags:
+      - AtRisk
+  /atRisk/cache/delete:
+    delete:
+      description: removes a key from cache
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.AtRiskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Delete a cache key
+      tags:
+      - AtRisk
+  /atRisk/event-score-details:
+    get:
+      description: fetches score for a specific event
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/datatypes.EventScoreResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get event score details
+      tags:
+      - AtRisk
+  /atRisk/extend-ttl:
+    post:
+      description: extends the expiry for a key in cache
+      parameters:
+      - description: user email
+        in: query
+        name: userEmail
+        required: true
+        type: string
+      - description: timestamp
+        in: query
+        name: timestamp
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Extent TTL
+      tags:
+      - AtRisk
+  /atRisk/score:
+    get:
+      description: fetches score from database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/datatypes.RiskScore'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a score
+      tags:
+      - AtRisk
+securityDefinitions:
+  Bearer:
+    type: basic
+swagger: "2.0"

@@ -1,0 +1,52 @@
+region: us-west-1
+deployment: dev
+server:
+  host: localhost
+  port: 8080
+redis:
+  at-risk-redis:
+    read:
+      host: localhost
+      port: 6379
+    write:
+      host: localhost
+      port: 6379
+  www-redis:
+    read:
+      host: localhost
+      port: 6379
+    write:
+      host: localhost
+      port: 6379
+mysql:
+  at-risk-db:
+    read:
+      user: root
+      password: password
+      host: localhost
+      port: 3306
+      dbname: securly_atrisk
+    write:
+      user: root
+      password: password
+      host: localhost
+      port: 3306
+      dbname: securly_atrisk
+  schools-db:
+    read:
+      user: root
+      password: password
+      host: localhost
+      port: 3306
+      dbname: securly_schools
+    write:
+      user: root
+      password: password
+      host: localhost
+      port: 3306
+      dbname: securly_schools
+elastic:
+  username: root
+  password: password
+  host: localhost
+  port: 9200

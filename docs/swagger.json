@@ -1,0 +1,550 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is www-api server.",
+        "title": "WWW-API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Securly",
+            "url": "https://https://www.securly.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/api/customer/filter-type": {
+            "get": {
+                "description": "fetches filters for an fid",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Filter",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.FilterType"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer/notification/config/aware": {
+            "get": {
+                "description": "fetches notification email",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Notification",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.Notification"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer/privacy/status": {
+            "get": {
+                "description": "fetches info of a student",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Privacy Status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer/timezone": {
+            "get": {
+                "description": "fetches timezone for a fid",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Timezone",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.TimezoneResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "description": "fetches info of a student",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get student info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.StudentInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/atRisk/cache/create": {
+            "post": {
+                "description": "add/update a value in cache",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AtRisk"
+                ],
+                "summary": "Create a cache",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.AtRiskResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/atRisk/cache/delete": {
+            "delete": {
+                "description": "removes a key from cache",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AtRisk"
+                ],
+                "summary": "Delete a cache key",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.AtRiskResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/atRisk/event-score-details": {
+            "get": {
+                "description": "fetches score for a specific event",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AtRisk"
+                ],
+                "summary": "Get event score details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/datatypes.EventScoreResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/atRisk/extend-ttl": {
+            "post": {
+                "description": "extends the expiry for a key in cache",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AtRisk"
+                ],
+                "summary": "Extent TTL",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "user email",
+                        "name": "userEmail",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "timestamp",
+                        "name": "timestamp",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/atRisk/score": {
+            "get": {
+                "description": "fetches score from database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AtRisk"
+                ],
+                "summary": "Get a score",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/datatypes.RiskScore"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "datatypes.AtRiskResponse": {
+            "type": "object",
+            "properties": {
+                "atRiskScore": {
+                    "type": "integer"
+                }
+            }
+        },
+        "datatypes.EventScoreResponse": {
+            "type": "object",
+            "properties": {
+                "atRiskKey": {
+                    "type": "string"
+                },
+                "atRiskScore": {
+                    "type": "integer"
+                },
+                "atRiskValue": {
+                    "type": "string"
+                }
+            }
+        },
+        "datatypes.FilterType": {
+            "type": "object",
+            "properties": {
+                "adIntranet": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "azureGrpImportPref": {
+                    "type": "string"
+                },
+                "blockPageMsg": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lockValue": {
+                    "type": "integer"
+                },
+                "parentSetting": {
+                    "type": "integer"
+                },
+                "schoolType": {
+                    "type": "integer"
+                },
+                "showEns": {
+                    "type": "integer"
+                },
+                "showPause": {
+                    "type": "integer"
+                },
+                "showPnp": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "datatypes.Notification": {
+            "type": "object",
+            "properties": {
+                "basegen": {
+                    "type": "integer"
+                },
+                "fid": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "notificationEmail": {
+                    "type": "string"
+                }
+            }
+        },
+        "datatypes.RiskScore": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "selfHarmScore": {
+                    "type": "string"
+                }
+            }
+        },
+        "datatypes.StudentInfo": {
+            "type": "object",
+            "properties": {
+                "familyName": {
+                    "type": "string"
+                },
+                "givenName": {
+                    "type": "string"
+                }
+            }
+        },
+        "datatypes.TimezoneResponse": {
+            "type": "object",
+            "properties": {
+                "tz": {
+                    "type": "string"
+                },
+                "tzAbbr": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "basic"
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}

@@ -1,0 +1,7 @@
+package constants
+
+const FILTER_PRIVACY = 0
+const AWARE_PRIVACY = 1
+const RESPONDER_PRIVACY = 2
+const TWENTY_FOUR_PRIVACY = 3
+const SUPPRESS_BULLY = 4
